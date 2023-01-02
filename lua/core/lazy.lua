@@ -28,42 +28,7 @@ local function daylight()
   -- end
 end
 
-local function randomscheme()
-  local themes = {
-    "starry.nvim",
-    "aurora",
-    "aurora",
-    "tokyonight.nvim",
-    "starry.nvim",
-    "aurora",
-    "gruvbox-material",
-    "sonokai",
-    "catppuccin",
-    "github-nvim-theme",
-    "galaxy",
-  }
-
-  if daylight() == "light" then
-    vim.o.background = "light"
-    themes = { "starry.nvim", "catppuccin" }
-  end
-
-  local v = math.random(1, #themes)
-
-  local loading_theme = themes[v]
-  --[[ loading_theme = "aurora" ]]
-  -- lprint(loading_theme, os.clock())
-  if daylight() == "light" then
-    if loading_theme == "starry" or loading_theme == "catppuccin" then
-      if vim.fn.executable("kitty") == 1 then --TODO: not finished
-        vim.cmd([[silent exec "!kitty +kitten themes --reload-in=all Material"]])
-      end
-    end
-  end
-  return loading_theme
-end
-
-local loading_theme = randomscheme()
+local loading_theme = "gruvbox-material"
 
 local function load_colorscheme(theme)
   if theme == "galaxy" then
